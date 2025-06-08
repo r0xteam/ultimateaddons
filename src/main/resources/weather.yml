@@ -1,0 +1,72 @@
+# Основные настройки погоды
+weather:
+  enabled: true
+  # Интервал в секундах, как часто погода будет пытаться измениться
+  update-interval: 600
+  # Шанс (0.0 до 1.0), что начнется шторм во время дождя
+  storm-chance: 0.05
+  # Длительность шторма в секундах
+  storm-duration: 900
+  # Максимальная сила ветра
+  max-wind-strength: 1.5
+
+  # Настройки для каждого типа погоды
+  types:
+    DRIZZLE:
+      # Количество частиц за один тик
+      particle-amount: 5
+      # Скорость частиц (вертикальная)
+      particle-speed: -0.5
+      # Шанс замерзания при низкой температуре
+      freeze-chance: 0.1
+    RAIN:
+      particle-amount: 20
+      particle-speed: -1.0
+      freeze-chance: 0.2
+    HEAVY_RAIN:
+      particle-amount: 40
+      particle-speed: -1.5
+      freeze-chance: 0.4
+      # Шанс появления частиц брызг
+      splash-chance: 0.1
+    STORM:
+      particle-amount: 60
+      particle-speed: -2.0
+      freeze-chance: 0.5
+      splash-chance: 0.2
+      # Шанс удара молнии (за тик для каждого игрока)
+      lightning-chance: 0.02
+    SNOW:
+      particle-amount: 30
+      particle-speed: -0.1
+    FOG:
+      particle-amount: 50
+      # Плотность тумана (чем выше, тем плотнее)
+      fog-density: 0.1
+    HURRICANE:
+      # Наследует эффекты STORM, но с усилением
+      # Сила ветра будет установлена на максимум во время урагана
+      particle-amount: 100
+      particle-speed: -2.5
+      splash-chance: 0.3
+      lightning-chance: 0.05
+      # Частицы "мусора" (листья, земля)
+      debris-particle-amount: 30
+      # Разрушение блоков (ОПАСНО! МОЖЕТ ВЫЗВАТЬ ЛАГИ)
+      destruction:
+        enabled: false
+        # Шанс сломать блок в радиусе вокруг игрока
+        break-chance: 0.01
+        # Радиус поиска блоков для разрушения
+        radius: 5
+        # Список блоков, которые могут быть сломаны
+        breakable-blocks:
+          - "OAK_LEAVES"
+          - "BIRCH_LEAVES"
+          - "SPRUCE_LEAVES"
+          - "DARK_OAK_LEAVES"
+          - "ACACIA_LEAVES"
+          - "JUNGLE_LEAVES"
+          - "AZALEA_LEAVES"
+          - "GLASS_PANE"
+          - "GLASS" 
