@@ -1,4 +1,0 @@
-maintenance:
-  enabled: false
-  kick-message: "&cСервер на технических работах. Попробуйте зайти позже."
-  maintenance-motd: "&6UltimateAddons &8| &cСервер на обслуживании" 

@@ -1,0 +1,14 @@
+visual-effects:
+  enabled: true
+  # Интервал обновления эффектов в тиках (1 = каждый тик)
+  update-interval: 1
+  # Максимальное расстояние, на котором видны эффекты
+  max-distance: 50
+  # Доступные эффекты для игроков
+  available-effects:
+    - SPIRAL
+    - RING
+    - SPHERE
+    - HELIX
+    - WINGS
+    - AURA 

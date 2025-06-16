@@ -1,4 +1,0 @@
-join-quit-messages:
-  enabled: true
-  join-message: "&8[&a+&8] &7%player%"
-  quit-message: "&8[&c-&8] &7%player%" 

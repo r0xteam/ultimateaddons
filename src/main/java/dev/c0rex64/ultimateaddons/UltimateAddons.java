@@ -6,8 +6,10 @@ import dev.c0rex64.ultimateaddons.commands.MainCommand;
 import dev.c0rex64.ultimateaddons.config.ConfigManager;
 import dev.c0rex64.ultimateaddons.managers.MechanicManager;
 import dev.c0rex64.ultimateaddons.mechanics.broadcast.AutoBroadcastMechanic;
+import dev.c0rex64.ultimateaddons.mechanics.effects.VisualEffectsMechanic;
 import dev.c0rex64.ultimateaddons.mechanics.joinquit.CustomJoinQuitMechanic;
 import dev.c0rex64.ultimateaddons.mechanics.maintenance.MaintenanceMechanic;
+import dev.c0rex64.ultimateaddons.mechanics.teleport.TeleportMechanic;
 import dev.c0rex64.ultimateaddons.mechanics.weather.WeatherMechanic;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -32,6 +34,8 @@ public class UltimateAddons extends JavaPlugin {
         mechanicManager.registerMechanic(new AutoBroadcastMechanic(this));
         mechanicManager.registerMechanic(new CustomJoinQuitMechanic(this));
         mechanicManager.registerMechanic(new MaintenanceMechanic(this));
+        mechanicManager.registerMechanic(new VisualEffectsMechanic(this));
+        mechanicManager.registerMechanic(new TeleportMechanic(this));
         mechanicManager.enableAll();
         
         getCommand("ultimateaddons").setExecutor(new MainCommand(this));

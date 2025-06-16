@@ -15,6 +15,8 @@ public class ConfigManager {
     private FileConfiguration broadcastConfig;
     private FileConfiguration joinQuitConfig;
     private FileConfiguration maintenanceConfig;
+    private FileConfiguration effectsConfig;
+    private FileConfiguration teleportConfig;
     
     public ConfigManager(UltimateAddons plugin) {
         this.plugin = plugin;
@@ -28,6 +30,8 @@ public class ConfigManager {
         loadBroadcastConfig();
         loadJoinQuitConfig();
         loadMaintenanceConfig();
+        loadEffectsConfig();
+        loadTeleportConfig();
     }
     
     private void loadWeatherConfig() {
@@ -62,6 +66,22 @@ public class ConfigManager {
         maintenanceConfig = YamlConfiguration.loadConfiguration(maintenanceFile);
     }
     
+    private void loadEffectsConfig() {
+        File effectsFile = new File(plugin.getDataFolder(), "effects.yml");
+        if (!effectsFile.exists()) {
+            plugin.saveResource("effects.yml", false);
+        }
+        effectsConfig = YamlConfiguration.loadConfiguration(effectsFile);
+    }
+
+    private void loadTeleportConfig() {
+        File teleportFile = new File(plugin.getDataFolder(), "teleport.yml");
+        if (!teleportFile.exists()) {
+            plugin.saveResource("teleport.yml", false);
+        }
+        teleportConfig = YamlConfiguration.loadConfiguration(teleportFile);
+    }
+    
     public void saveWeatherConfig() {
         try {
             weatherConfig.save(new File(plugin.getDataFolder(), "weather.yml"));
@@ -94,6 +114,22 @@ public class ConfigManager {
         }
     }
     
+    public void saveEffectsConfig() {
+        try {
+            effectsConfig.save(new File(plugin.getDataFolder(), "effects.yml"));
+        } catch (IOException e) {
+            plugin.getLogger().severe("Не удалось сохранить effects.yml: " + e.getMessage());
+        }
+    }
+
+    public void saveTeleportConfig() {
+        try {
+            teleportConfig.save(new File(plugin.getDataFolder(), "teleport.yml"));
+        } catch (IOException e) {
+            plugin.getLogger().severe("Не удалось сохранить teleport.yml: " + e.getMessage());
+        }
+    }
+    
     public void reloadConfigs() {
         plugin.reloadConfig();
         mainConfig = plugin.getConfig();
@@ -101,6 +137,8 @@ public class ConfigManager {
         loadBroadcastConfig();
         loadJoinQuitConfig();
         loadMaintenanceConfig();
+        loadEffectsConfig();
+        loadTeleportConfig();
     }
     
     public FileConfiguration getMainConfig() {
@@ -121,5 +159,13 @@ public class ConfigManager {
     
     public FileConfiguration getMaintenanceConfig() {
         return maintenanceConfig;
+    }
+    
+    public FileConfiguration getEffectsConfig() {
+        return effectsConfig;
+    }
+
+    public FileConfiguration getTeleportConfig() {
+        return teleportConfig;
     }
 } 
